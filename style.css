@@ -1,149 +1,153 @@
+/* ===========================
+   CSS listo para copiar/pegar
+   - Mobile menu (Android-safe)
+   - Overlay funcional
+   - Correcciones de unidades/typos
+   =========================== */
+
 /*Importing Google fonts*/
 @import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=BBH+Bogle&family=Italiana&family=Momo+Trust+Display&display=swap');
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Italiana", sans-serif;
-}
-
 :root{
-    /*Colors*/
---white-color: #fff;
---dark-color: #252525;
---primary-color: #000;
---linearbackground-color: #171717;
---secondary-color: #783e8c;
---light-pink-color: #faf4f5;
---medium-gray-color: #ccc;
+  /* Colors */
+  --white-color: #fff;
+  --dark-color: #252525;
+  --primary-color: #000;
+  --linearbackground-color: #171717;
+  --secondary-color: #783e8c;
+  --light-pink-color: #faf4f5;
+  --medium-gray-color: #ccc;
 
-/* Font size */
---font-size-s: 0.9rem;
---font-size-n: 1rem;
---font-size-m: 1.12rem;
---font-size-l: 1.5rem;
---font-size-xl: 2rem;
---font-size-xxl: 2.3rem;
+  /* Font size */
+  --font-size-s: 0.9rem;
+  --font-size-n: 1rem;
+  --font-size-m: 1.12rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.3rem;
 
-/* Font weight */
---font-weight-normal: 400;
---font-weight-medium: 500;
---font-weight-semibold: 600;
---font-weight-bold: 700;
+  /* Font weight */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-/*Border radius*/
---border-radius-s: 8px;
---border-radius-m: 30px;
---border-radius-circle: 50%;
+  /* Border radius */
+  --border-radius-s: 8px;
+  --border-radius-m: 30px;
+  --border-radius-circle: 50%;
 
-/*Site max width*/
---site-max-width: 1300px;
-    
+  /* Site max width */
+  --site-max-width: 1300px;
 }
 
-/*Stylings for whole site*/
-ul  {
-    list-style: none;
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Italiana", sans-serif;
 }
 
-a {
-    text-decoration: none;
+/* Base & helpers */
+html, body {
+  min-height: 100vh;
+  height: 100%;
 }
 
-button {
-    cursor: pointer;
-    border: none;
-    background: none;
+body {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--linearbackground-color);
+  color: var(--white-color);
+  line-height: 1.6;
+  position: relative;
+  font-family: "Italiana", sans-serif;
+  overflow-x: hidden; /* evita scroll horizontal y no rompe fixed */
 }
 
-img {
-    width: 100%;
-}
-
+/* Basic elements */
+ul { list-style: none; }
+a { text-decoration: none; color: inherit; }
+button { cursor: pointer; border: none; background: none; }
+img { width: 100%; display: block; }
 .section-content {
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: var(--site-max-width);
-    position: relative;
-    z-index: 2;
-
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: var(--site-max-width);
+  position: relative;
+  z-index: 2;
 }
 
-/*navbar styling*/
+/* NAVBAR / HEADER */
 header {
-    position: fixed;
-    width: 100%;
-    z-index: 5;
-    background: var(--primary-color);
-    
-
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  background: var(--primary-color);
+  top: 0;
+  left: 0;
 }
 
 .bussines-logo {
-    display: flex;
-    position: static;
-    width: 10%;
-    
-
+  display: flex;
+  width: 10%;
+  align-items: center;
 }
 
 header .navbar {
-    display: flex;
-    padding: 20px;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbar .nav-logo .logo-text {
-    color: var(--white-color);
-    font-size: var(--font-size-xl);
-    font-weight: var(--font-weight-semibold);
+  color: var(--white-color);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
 }
 
+/* Desktop nav menu */
 .navbar .nav-menu {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .navbar .nav-menu .nav-link {
-    padding: 10px 18px;
-    color: var(--white-color);
-    font-size: var(--font-size-m);
-    border-radius: var(--border-radius-m);
-    transition: 0.4s ease;
+  padding: 10px 18px;
+  color: var(--white-color);
+  font-size: var(--font-size-m);
+  border-radius: var(--border-radius-m);
+  transition: 0.4s ease;
 }
 
 .navbar .nav-menu .nav-link:hover {
-    color: var(--primary-color);
-    background: var(--secondary-color);
+  color: var(--primary-color);
+  background: var(--secondary-color);
 }
 
+/* Hide mobile menu buttons by default */
 .navbar :where(#menu-close-button, #menu-open-button) {
   display: none;
 }
 
-#hero {
-    min-height: 100vh;
-    position: relative;
-}
+/* HERO */
+#hero { min-height: 100vh; position: relative; }
+.hero-section { min-height: 100vh; background: var(--linearbackground-color); }
 
-.hero-section {
-    min-height: 100vh;
-    background: var(--linearbackground-color);
-}
-
-.hero-section .section-content{
-    display: flex;
-    align-items: center;
-    min-height: 100vh;
-    color: var(--white-color);
-    justify-content: space-between;
+.hero-section .section-content {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--white-color);
+  justify-content: space-between;
 }
 
 .hero-section .hero-details .title {
-   font-size: var(--font-size-xxl); 
-   font-family: "Miniver", sans-serif;
+  font-size: var(--font-size-xxl);
+  font-family: "Miniver", sans-serif;
   background: linear-gradient(90deg, #de00cf, #1691f6, #51cf66);
   background-size: 200%;
   -webkit-background-clip: text;
@@ -156,7 +160,6 @@ header .navbar {
   100% { background-position: 200%; }
 }
 
-
 .hero-section .hero-details .subtitle {
   margin-top: 8px;
   max-width: 70%;
@@ -165,35 +168,31 @@ header .navbar {
 }
 
 .hero-section .hero-details .description {
-    max-width: 70%;
-    margin: 24px 0 40px;
-    font-size: var(--font-size-m);
+  max-width: 70%;
+  margin: 24px 0 40px;
+  font-size: var(--font-size-m);
 }
 
-.hero-section .hero-details .buttons{
-    display: flex;
-    gap: 26px;
+.hero-section .hero-details .buttons {
+  display: flex;
+  gap: 26px;
 }
 
-.hero-section .hero-details .button{
-    padding: 16px 40px;
+.hero-section .hero-details .button {
+  padding: 16px 40px;
   background: var(--secondary-color);
   color: #fff;
   border: none;
   border-radius: 12px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: transform .25s ease;
-  font-weight: var(--font-weight-semibold) ;
-  
- 
 }
 
-.hero-section .hero-details .button:hover{
-    border-color: var(--white-color);
-    background: transparent;
-    animation: pulse 1.2s infinite;
-    
+.hero-section .hero-details .button:hover {
+  border-color: var(--white-color);
+  background: transparent;
+  animation: pulse 1.2s infinite;
 }
 
 @keyframes pulse {
@@ -202,110 +201,135 @@ header .navbar {
   100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
 }
 
-
-
-.hero-section .hero-image-wrapper{
-    max-width: 500px;
-    margin-right: 30px;
+.hero-section .hero-image-wrapper {
+  max-width: 500px;
+  margin-right: 30px;
 }
 
-
-/* Responsive media query code for max width 900px */
+/* =========================
+   MOBILE / RESPONSIVE
+   ========================= */
 @media screen and (max-width: 900px) {
-    :root{
-
-   --font-size-m: 1rem;
-   --font-size-l: 1.3rem;
-   --font-size-xl: 1.5rem;
-   --font-size-xxl: 1.8rem;
+  :root{
+    --font-size-m: 1rem;
+    --font-size-l: 1.3rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 1.8rem;
   }
 
-  body.show-mobile-menu header::before {
-  content: "";
-  position: fixed;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  backdrop-filter: 56px;
-  background: (0, 0, 0, 0.2);}
+  /* Menu overlay (separate element in DOM) */
+  .menu-overlay {
+    position: fixed;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    background: rgba(0, 0, 0,.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 40;
+  }
 
-
-
-.navbar :where(#menu-close-button, #menu-open-button) {
+  /* Show mobile buttons */
+  .navbar :where(#menu-close-button, #menu-open-button) {
     display: block;
     font-size: var(--font-size-l);
+  }
+
+  .navbar #menu-close-button {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    color: var(--secondary-color);
+    z-index: 60;
+    transition: background .25s ease, transform .25s ease;
+  }
+  .navbar #menu-close-button:hover {
+  transform: rotate(90deg);
 }
 
-.navbar #menu-close-button{
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  color: red;
-}
+  .navbar #menu-open-button {
+    color: var(--white-color);
+  }
 
-.navbar #menu-open-button{
-  color:  var(--white-color);
-}  
-
-
+  /* Mobile nav menu: use transform for animation (Android friendly) */
   .navbar .nav-menu {
-    display: block;
     position: fixed;
-    left: -300;
     top: 0;
-    width:  300px;
-    height: 100%;
+    left: 0;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 100px;
-    background: var(--white-color);
-    transition: left 0.2s ease;
+    background: var(--primary-color);
+    transform: translateX(-100%); /* hidden by default */
+    transition: transform 0.35s cubic-bezier(.2,.9,.3,1);
+    z-index: 50;
+    will-change: transform;
+    backface-visibility: hidden;
   }
 
-  body.show-mobile-menu .navbar .nav-menu{
-    left: 0;
+  body.show-mobile-menu #menu-open-button {
+  opacity: 0;
+  transform: rotate(90deg) scale(.6);
+  pointer-events: none;
+}
+
+  /* When body has this class, menu opens */
+  body.show-mobile-menu .nav-menu {
+    transform: translateX(0);
   }
 
-
-
-
-  .navbar .nav-menu .nav-link {
-    color: var(--dark-color);
-    display: block;
-    margin-top: 17px;
-    font-size: var(--font-size-l);
+  /* Show overlay when menu open */
+  body.show-mobile-menu .menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
   }
 
-}
+  /* Prevent body scroll when menu open */
+  body.show-mobile-menu {
+    overflow: hidden;
+  }
 
-
-
-  
-/*linear-background*/
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box !important;
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  display: table;
+  /* Mobile link styles */
+.navbar .nav-menu .nav-link {
   width: 100%;
-  height: 100%;
-  background-color: var(--linearbackground-color);
-  color: var(--linearbackground-color);
-  line-height: 1.6;
-  position: relative;
-  font-family: sans-serif;
-  overflow: hidden;
+  padding: 14px 20px;
+
+  background: rgba(255,255,255,.04);
+  border-radius: 16px;
+
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-medium);
+  color: #fff;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  transition:
+    background .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
 }
 
+/* Tap / Hover */
+.navbar .nav-menu .nav-link:hover {
+  transform: translateX(6px);
+  box-shadow: 0 8px 22px rgba(120,62,140,.45);
+}
+/* ACTIVE (mejor feedback táctil) */
+.navbar .nav-menu .nav-link:active {
+  transform: scale(.97);
+}
+}
+
+/* =========================
+   LINE EFFECT (corrected)
+   ========================= */
 .lines {
   position: absolute;
   top: 0;
@@ -313,7 +337,7 @@ body {
   right: 0;
   height: 100%;
   margin: auto;
-  width: 9  0vw;
+  width: 90vw; /* fixed typo */
 }
 .lines .line {
   position: absolute;
@@ -332,45 +356,24 @@ body {
   width: 100%;
   top: -50%;
   left: 0;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0)), color-stop(75%, #ffffff), to(#ffffff));
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-  -webkit-animation: run 7s 0s infinite;
-          animation: run 7s 0s infinite;
-  -webkit-animation-fill-mode: forwards;
-          animation-fill-mode: forwards;
-  -webkit-animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-          animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, #ffffff 75%, #ffffff 100%);
+  animation: run 7s 0s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
 }
-.lines .line:nth-child(1) {
-  margin-left: -25%;
-}
-.lines .line:nth-child(1)::after {
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-.lines .line:nth-child(3) {
-  margin-left: 25%;
-}
-.lines .line:nth-child(3)::after {
-  -webkit-animation-delay: 2.5s;
-          animation-delay: 2.5s;
-}
-
-@-webkit-keyframes run {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
-}
+.lines .line:nth-child(1) { margin-left: -25%; }
+.lines .line:nth-child(1)::after { animation-delay: 2s; }
+.lines .line:nth-child(3) { margin-left: 25%; }
+.lines .line:nth-child(3)::after { animation-delay: 2.5s; }
 
 @keyframes run {
-  0% {
-    top: -50%;
-  }
-  100% {
-    top: 110%;
-  }
+  0% { top: -50%; }
+  100% { top: 110%; }
 }
-/*linear-background*/
+
+/* Small utility: keep images responsive in hero */
+.hero-section .hero-image-wrapper img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
