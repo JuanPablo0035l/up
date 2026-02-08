@@ -1,0 +1,82 @@
+---
+import "../styles/main.css";
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+		/>
+	</head>
+	<body>
+		<div class="menu-overlay" id="menu-overlay"></div>
+
+		<div id="smooth-wrapper">
+			<div id="smooth-content">
+				<header class="main-header">
+					<nav class="navbar section-content">
+						<div class="header-inner">
+							<img
+								src="/img/Logo up party.png"
+								alt="Logo Up"
+								class="up-logo"
+							/>
+							<h1 class="header-title">
+								Alquiler de fotocabinas, fiestas y eventos
+							</h1>
+						</div>
+
+						<ul class="nav-menu">
+							<button
+								id="menu-close-button"
+								class="fas fa-times"
+								aria-label="Cerrar menú"></button>
+							<li class="nav-item">
+								<a href="/" class="nav-link">Inicio</a>
+							</li>
+							<li class="nav-item">
+								<a href="/photobooth" class="nav-link"
+									>Photobooth</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link"
+									>Fiestas y Eventos</a>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link">Galeria</a>
+							</li>
+						</ul>
+
+						<button
+							id="menu-open-button"
+							class="fas fa-bars"
+							aria-label="Abrir menú"></button>
+					</nav>
+				</header>
+
+				<main>
+					<slot />
+				</main>
+
+				<div class="lines">
+					<div class="line"></div>
+					<div class="line"></div>
+					<div class="line"></div>
+				</div>
+			</div>
+		</div>
+
+		<script is:inline src="/js/script.js"></script>
+	</body>
+</html>

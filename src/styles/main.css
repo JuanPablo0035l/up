@@ -1,0 +1,293 @@
+/*Importing Google fonts*/
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=BBH+Bogle&family=Italiana&family=Momo+Trust+Display&display=swap');
+
+
+:root {
+  /* Colors */
+  --white-color: #fff;
+  --dark-color: #252525;
+  --primary-color: #000;
+  --linearbackground-color: #171717;
+  --secondary-color: #783e8c;
+  --light-pink-color: #faf4f5;
+  --medium-gray-color: #ccc;
+
+  /* Font size */
+  --font-size-s: 0.9rem;
+  --font-size-n: 1rem;
+  --font-size-m: 1.12rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.3rem;
+
+  /* Font weight */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Border radius */
+  --border-radius-s: 8px;
+  --border-radius-m: 30px;
+  --border-radius-circle: 50%;
+
+  /* Site max width */
+  --site-max-width: 1300px;
+
+
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Italiana", sans-serif;
+}
+
+/* Base & helpers */
+html,
+body {
+  min-height: 100vh;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--linearbackground-color);
+  color: var(--white-color);
+  line-height: 1.6;
+  position: relative;
+  font-family: "Italiana", sans-serif;
+  overflow-x: hidden;
+  /* evita scroll horizontal y no rompe fixed */
+}
+
+/* Basic elements */
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.section-content {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: var(--site-max-width);
+  position: relative;
+  z-index: 2;
+}
+
+/* NAVBAR / HEADER */
+.main-header {
+  position: fixed;
+  width: 100%;
+  z-index: 50;
+  background: var(--primary-color);
+  top: 0;
+  left: 0;
+}
+
+.header-inner {
+  display: flex;
+
+  align-items: center;
+  padding: 10px 16px;
+}
+
+.up-logo {
+  max-height: 43px;
+  width: auto;
+  align-items: center;
+}
+
+.header-title {
+  font-size: var(--font-size-s);
+  text-align: center;
+  margin-left: 15px;
+}
+
+header .navbar {
+  display: flex;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+}
+
+.navbar .nav-logo .logo-text {
+  color: var(--white-color);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+}
+
+/* Desktop nav menu */
+
+.navbar .nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.navbar .nav-menu .nav-link {
+  padding: 10px 18px;
+  color: var(--white-color);
+  font-size: var(--font-size-m);
+  border-radius: var(--border-radius-m);
+  transition: 0.4s ease;
+}
+
+.navbar .nav-menu .nav-link:hover {
+  color: var(--primary-color);
+  background: var(--secondary-color);
+}
+
+/* Hide mobile menu buttons by default */
+.navbar :where(#menu-close-button, #menu-open-button) {
+  display: none;
+}
+
+
+/* =========================
+   MOBILE / RESPONSIVE
+   ========================= */
+@media screen and (max-width: 900px) {
+  :root {
+    --font-size-m: 1rem;
+    --font-size-l: 1.3rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 1.8rem;
+  }
+
+  /* Menu overlay (separate element in DOM) */
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    /* top:0; right:0; bottom:0; left:0; */
+    background: rgba(0, 0, 0, .45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 40;
+  }
+
+  /* Show mobile buttons */
+  .navbar :where(#menu-close-button, #menu-open-button) {
+    display: block;
+    font-size: var(--font-size-l);
+  }
+
+  .navbar #menu-close-button {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    color: var(--secondary-color);
+    z-index: 60;
+    transition: background .25s ease, transform .25s ease;
+  }
+
+  .navbar #menu-close-button:hover {
+    transform: rotate(90deg);
+    transition: 1s;
+  }
+
+  .navbar #menu-open-button {
+    color: var(--white-color);
+  }
+
+  /* Mobile nav menu: use transform for animation (Android friendly) */
+  .navbar .nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75%;
+    max-width: 320px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    background: var(--primary-color);
+    transform: translateX(-100%);
+    /* hidden by default */
+    transition: transform 0.35s cubic-bezier(.2, .9, .3, 1);
+    z-index: 50;
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+
+  body.show-mobile-menu #menu-open-button {
+    opacity: 0;
+    transform: rotate(90deg) scale(.6);
+    pointer-events: none;
+  }
+
+  /* When body has this class, menu opens */
+  body.show-mobile-menu .nav-menu {
+    transform: translateX(0);
+  }
+
+  /* Show overlay when menu open */
+  body.show-mobile-menu .menu-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Prevent body scroll when menu open */
+  body.show-mobile-menu {
+    overflow: hidden;
+  }
+
+  /* Mobile link styles */
+  .navbar .nav-menu .nav-link {
+    width: 100%;
+    padding: 14px 20px;
+
+    background: rgba(255, 255, 255, .04);
+    border-radius: 16px;
+
+    font-size: var(--font-size-m);
+    font-weight: var(--font-weight-medium);
+    color: #fff;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    transition:
+      background .25s ease,
+      transform .25s ease,
+      box-shadow .25s ease;
+  }
+
+  /* Tap / Hover */
+  .navbar .nav-menu .nav-link:hover {
+    transform: translateX(6px);
+    box-shadow: 0 8px 22px rgba(120, 62, 140, .45);
+  }
+
+  /* ACTIVE (mejor feedback táctil) */
+  .navbar .nav-menu .nav-link:active {
+    transform: scale(.97);
+  }
+
+
+}

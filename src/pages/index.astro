@@ -1,0 +1,126 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import "../styles/home.css";
+---
+
+<MainLayout title="Up Party Rentals - Inicio">
+	<!--Hero section-->
+
+	<section class="hero-section">
+		<div class="section-content">
+			<div class="hero-details">
+				<h2 class="title">
+					La experiencia 360° más brutal de la Isla de San Andrés
+				</h2>
+
+				<h3 class="subtitle">
+					Más que un video, una experiencia que se siente
+				</h3>
+
+				<p class="description">
+					Vive, graba y comparte un momento único con nuestra
+					plataforma de video 360°. Luces, música y pura vibra
+					caribeña en un solo giro
+				</p>
+
+				<div class="buttons">
+					<a href="#" class="button Agenda">¡Agenda ya!</a>
+				</div>
+			</div>
+
+			<div class="hero-image-wrapper">
+				<img
+					src="/img/360-Photo-Booth-PNG-Free-Image.png"
+					alt="Hero"
+					class="hero-image"
+				/>
+			</div>
+		</div>
+	</section>
+
+	<div class="carousel-wrapper" id="wrapper">
+		<h2 class="title">
+			DESCUBRE <span class="highlight">LA FOTOCABINA</span>
+		</h2>
+
+		<div class="carousel-track" id="track">
+			<figure class="card">
+				<img
+					src="https://www.shutterstock.com/shutterstock/photos/2414591175/display_1500/stock-photo-riga-latvia-december-person-standing-on-a-degree-photo-booth-platform-often-2414591175.jpg"
+					alt="Be a superstar"
+				/>
+
+				<figcaption>
+					<h3>Be a superstar</h3>
+
+					<p>Se una estrella con nuestra 360</p>
+				</figcaption>
+			</figure>
+
+			<figure class="card">
+				<img
+					src="https://www.shutterstock.com/shutterstock/photos/2528409143/display_1500/stock-photo-a-degree-photo-booth-setup-with-led-lights-and-a-rotating-platform-surrounded-by-floral-2528409143.jpg"
+					alt="No puede faltar"
+				/>
+
+				<figcaption>
+					<h3>No puede faltar</h3>
+
+					<p>Apto para todo tipo de eventos</p>
+				</figcaption>
+			</figure>
+
+			<figure class="card">
+				<img
+					src="https://images.unsplash.com/photo-1765947390055-c5187b491ba0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+					alt="¡Inalambrica!"
+				/>
+
+				<figcaption>
+					<h3>¡Inalambrica!</h3>
+
+					<p>Con bateria de alta duracion</p>
+				</figcaption>
+			</figure>
+
+			<figure class="card">
+				<img
+					src="https://www.visioncaptis.com/cdn/shop/files/WhatsAppImage2024-10-12at12.46.16_1.jpg?v=1728753178&width=1445"
+					alt="Disponible en la playa"
+				/>
+
+				<figcaption>
+					<h3>Disponible en la playa</h3>
+
+					<p>Recuerdos inolvidables</p>
+				</figcaption>
+			</figure>
+
+			<figure class="card">
+				<img
+					src="https://lacabinamexico.com/wp-content/uploads/2023/10/Servicio-Video-booth-04.jpg"
+					alt="Vive la magia"
+				/>
+
+				<figcaption>
+					<h3>Vive la magia</h3>
+
+					<p>Crea momentos unicos</p>
+				</figcaption>
+			</figure>
+		</div>
+
+		<button class="nav-btn prev-btn" id="prevBtn" aria-label="Anterior">
+			<svg viewBox="0 0 24 24"
+				><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
+				></path></svg
+			>
+		</button>
+		<button class="nav-btn next-btn" id="nextBtn" aria-label="Siguiente">
+			<svg viewBox="0 0 24 24"
+				><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+				></path></svg
+			>
+		</button>
+	</div>
+</MainLayout>
