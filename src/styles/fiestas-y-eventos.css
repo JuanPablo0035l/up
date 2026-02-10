@@ -1,0 +1,24 @@
+@import "../styles/main.css";
+
+.hero-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.title {
+    font-size: var(--font-size-xxl);
+    font-weight: var(--font-weight-bold);
+    font-family: "bbh", sans-serif;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    line-height: var(--line-height-base);
+    perspective: 1000px;
+}

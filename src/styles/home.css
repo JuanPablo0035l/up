@@ -1,7 +1,7 @@
 :root {
     /* ROOT CARRUSEL */
     --neon-color: #bf00ff;
-    --neon-secondary: #13fed3;
+    --neon-secondary: #fe13bb;
     --bg-color: #050505;
     --glass-border: rgba(255, 255, 255, 0.1);
     --card-width: 260px;
@@ -30,13 +30,33 @@
 
 .hero-section .hero-details .title {
     font-size: var(--font-size-xxl);
-    font-family: "Miniver", sans-serif;
+    font-family: "bbh", sans-serif;
     background: linear-gradient(90deg, purple, #1691f6, #51cf66, yellow);
     background-size: 200%;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: gradient 7s infinite linear;
+}
+
+/* Tu CSS original se mantiene igual, solo añade esto debajo: */
+
+.hero-section .hero-details .title {
+    /* Evita que el texto parpadee antes de la animación */
+    visibility: hidden;
+    /* Asegura que las letras tengan espacio para moverse */
+    overflow: visible;
+}
+
+/* Regla crítica para GSAP + Gradientes */
+.hero-section .hero-details .title div {
+    display: inline-block !important;
+    position: relative;
+    /* Esto hereda el gradiente del padre a cada letra durante la animación */
+    background: inherit;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 @keyframes gradient {
@@ -104,7 +124,15 @@
 }
 
 /* Responsive Home adjustments */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding-bottom: 80px;
+        min-height: auto;
+    }
+
+    .carousel-wrapper {
+        margin-top: 60px;
+    }
 
     /* CARRUSEL VISIBILIDAD ANDROID */
     :root {
@@ -141,18 +169,25 @@
     perspective: 1000px;
 }
 
-.title {
+.carousel-wrapper .title {
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 20px;
-    font-size: var(--font-size-l);
-    font-family: "Miniver", sans-serif;
+    margin-bottom: 80px;
+    line-height: 1.5;
+    font-size: var(--font-size-m);
+    font-family: "BBH Bogle", sans-serif;
     text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
     z-index: 20;
 }
 
+.carousel-wrapper .title a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .highlight {
     color: var(--neon-secondary);
+    font-family: "bbh", sans-serif;
 }
 
 /* --- TRACK --- */
@@ -280,72 +315,4 @@ figcaption p {
 .nav-btn svg {
     width: 30px;
     height: 30px;
-}
-
-/* --- LINE EFFECT --- */
-.lines {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    margin: auto;
-    width: 90vw;
-}
-
-.lines .line {
-    position: absolute;
-    width: 1px;
-    height: 100%;
-    top: 0;
-    left: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-}
-
-.lines .line::after {
-    content: "";
-    display: block;
-    position: absolute;
-    height: 15vh;
-    width: 100%;
-    top: -50%;
-    left: 0;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #ffffff 75%, #ffffff 100%);
-    animation: run 7s 0s infinite;
-    animation-fill-mode: forwards;
-    animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
-}
-
-.lines .line:nth-child(1) {
-    margin-left: -25%;
-}
-
-.lines .line:nth-child(1)::after {
-    animation-delay: 2s;
-}
-
-.lines .line:nth-child(3) {
-    margin-left: 25%;
-}
-
-.lines .line:nth-child(3)::after {
-    animation-delay: 2.5s;
-}
-
-@keyframes run {
-    0% {
-        top: -50%;
-    }
-
-    100% {
-        top: 110%;
-    }
-}
-
-/* Small utility: keep images responsive in hero */
-.hero-section .hero-image-wrapper img {
-    max-width: 100%;
-    height: auto;
-    display: block;
 }

@@ -1,5 +1,5 @@
 /*Importing Google fonts*/
-@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=BBH+Bogle&family=Italiana&family=Momo+Trust+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=BBH+Bartle&family=BBH+Bogle&family=Italiana&family=Miniver&family=Momo+Trust+Display&display=swap');
 
 
 :root {
@@ -15,7 +15,7 @@
   /* Font size */
   --font-size-s: 0.9rem;
   --font-size-n: 1rem;
-  --font-size-m: 1.12rem;
+  --font-size-m: 1.4rem;
   --font-size-l: 1.5rem;
   --font-size-xl: 2rem;
   --font-size-xxl: 2.3rem;
@@ -101,6 +101,12 @@ img {
   background: var(--primary-color);
   top: 0;
   left: 0;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.main-header.header-hidden {
+  transform: translateY(-100%);
 }
 
 .header-inner {
@@ -114,6 +120,18 @@ img {
   max-height: 43px;
   width: auto;
   align-items: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-link:hover .up-logo {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .header-title {
@@ -164,13 +182,14 @@ header .navbar {
 }
 
 
+
 /* =========================
    MOBILE / RESPONSIVE
    ========================= */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   :root {
-    --font-size-m: 1rem;
-    --font-size-l: 1.3rem;
+    --font-size-m: 1.2rem;
+    --font-size-l: 1.3em;
     --font-size-xl: 1.5rem;
     --font-size-xxl: 1.8rem;
   }

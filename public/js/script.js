@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ==========================================
     // 1. LÓGICA DEL MENÚ MOBILE (Prioridad Alta)
     // ==========================================
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Verificamos que los elementos existan antes de agregar eventos
     if (menuOpenBtn && menuCloseBtn) {
-        
+
         const toggleMenu = () => {
             document.body.classList.toggle("show-mobile-menu");
         };
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Eventos
         menuOpenBtn.addEventListener("click", toggleMenu);
         menuCloseBtn.addEventListener("click", closeMenu);
-        
+
         if (overlay) {
             overlay.addEventListener("click", closeMenu);
         }
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Solo ejecutamos si el carrusel existe en esta página
     if (track && cards.length > 0 && prevBtn && nextBtn) {
-      
+
         let autoPlayInterval;
         const autoPlayDelay = 3000;
 
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!targetCard) return;
             // Cálculo corregido para centrado exacto
             const scrollPosition = targetCard.offsetLeft - (track.offsetWidth / 2) + (targetCard.offsetWidth / 2);
-            
+
             track.scrollTo({
                 left: scrollPosition,
                 behavior: 'smooth'
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 stopAutoPlay();
                 centerCard(card);
                 // Reiniciar autoplay tras 5 segundos de inactividad
-                setTimeout(startAutoPlay, 5000); 
+                setTimeout(startAutoPlay, 5000);
             });
         });
 
@@ -92,12 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const getNextIndex = (direction) => {
             let currentIndex = Array.from(cards).findIndex(c => c.classList.contains('active'));
             if (currentIndex === -1) currentIndex = 0;
-            
+
             let nextIndex = currentIndex + direction;
             // Loop infinito
             if (nextIndex < 0) nextIndex = cards.length - 1;
             if (nextIndex >= cards.length) nextIndex = 0;
-            
+
             return nextIndex;
         };
 
@@ -117,16 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // --- EVENTOS DE CONTROLES ---
-        nextBtn.addEventListener('click', () => { 
-            stopAutoPlay(); 
-            navigate(1); 
-            startAutoPlay(); 
+        nextBtn.addEventListener('click', () => {
+            stopAutoPlay();
+            navigate(1);
+            startAutoPlay();
         });
 
-        prevBtn.addEventListener('click', () => { 
-            stopAutoPlay(); 
-            navigate(-1); 
-            startAutoPlay(); 
+        prevBtn.addEventListener('click', () => {
+            stopAutoPlay();
+            navigate(-1);
+            startAutoPlay();
         });
 
         // Teclado
@@ -139,6 +139,15 @@ document.addEventListener('DOMContentLoaded', () => {
         track.addEventListener('scroll', () => window.requestAnimationFrame(updateActiveCard));
         track.addEventListener('mouseenter', stopAutoPlay);
         track.addEventListener('mouseleave', startAutoPlay);
+
+        // --- MODO STANDBY (Ahorro de batería) ---
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopAutoPlay();
+            } else {
+                startAutoPlay();
+            }
+        });
 
         // --- INICIALIZACIÓN ---
         // Pequeño timeout para asegurar que el CSS ya cargó las dimensiones
