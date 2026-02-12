@@ -1,0 +1,129 @@
+---
+
+---
+
+<section class="how-it-works">
+    <div class="section-content">
+        <h2 class="section-title">
+            ¿Cómo <span class="highlight">Funciona?</span>
+        </h2>
+        <div class="steps-grid">
+            <div class="step-card">
+                <div class="step-number">01</div>
+                <div class="step-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <h3>Reserva</h3>
+                <p>
+                    Elige tu fecha, define el tipo de evento y asegura la
+                    diversión con un clic.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">02</div>
+                <div class="step-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <h3>Montaje</h3>
+                <p>
+                    Llegamos antes de que empiece la fiesta para dejar todo
+                    listo y brillante.
+                </p>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">03</div>
+                <div class="step-icon">
+                    <i class="fas fa-stars"></i>
+                </div>
+                <h3>¡Tú Brillas!</h3>
+                <p>
+                    Sube a la plataforma, graba tu video y recíbelo al instante
+                    en tu celular.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .how-it-works {
+        padding: 100px 20px;
+        background: transparent;
+        position: relative;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: var(--font-size-xl);
+        margin-bottom: 60px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .steps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .step-card {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 50px 30px;
+        border-radius: 24px;
+        text-align: center;
+        transition:
+            transform 0.4s ease,
+            border-color 0.4s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .step-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--neon-secondary);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .step-number {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        font-size: 4rem;
+        font-weight: 900;
+        opacity: 0.05;
+        color: #fff;
+        line-height: 1;
+    }
+
+    .step-icon {
+        font-size: 3rem;
+        color: var(--neon-secondary);
+        margin-bottom: 25px;
+        filter: drop-shadow(0 0 10px rgba(19, 254, 211, 0.3));
+    }
+
+    .step-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--text-color);
+    }
+
+    .step-card p {
+        color: var(--text-color);
+        opacity: 0.7;
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .how-it-works {
+            padding: 60px 15px;
+        }
+    }
+</style>

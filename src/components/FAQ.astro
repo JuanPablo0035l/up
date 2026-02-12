@@ -1,0 +1,165 @@
+---
+
+---
+
+<section class="faq-section">
+    <div class="section-content">
+        <h2 class="section-title">
+            Preguntas <span class="highlight">Frecuentes</span>
+        </h2>
+
+        <div class="faq-container">
+            <details class="faq-item" open>
+                <summary>
+                    <span>¿Cuánto espacio se necesita para el montaje?</span>
+                    <i class="fas fa-plus"></i>
+                </summary>
+                <div class="faq-content">
+                    <p>
+                        Necesitamos un área plana de aproximadamente 3x3 metros
+                        para la plataforma y el sistema de luces, asegurando que
+                        todos puedan moverse con comodidad.
+                    </p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <span>¿Cuánto tiempo tardan en dejar todo listo?</span>
+                    <i class="fas fa-plus"></i>
+                </summary>
+                <div class="faq-content">
+                    <p>
+                        Llegamos entre 45 y 60 minutos antes del inicio del
+                        servicio para realizar el montaje técnico y las pruebas
+                        de iluminación necesarias.
+                    </p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <span>¿Cómo recibo mis videos después de grabar?</span>
+                    <i class="fas fa-plus"></i>
+                </summary>
+                <div class="faq-content">
+                    <p>
+                        ¡Es instantáneo! Al terminar de grabar, se genera un
+                        código QR que puedes escanear para descargar tu video en
+                        4K directo a tu celular. También soportamos AirDrop y
+                        WhatsApp.
+                    </p>
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary>
+                    <span>¿Incluyen accesorios o props para el video?</span>
+                    <i class="fas fa-plus"></i>
+                </summary>
+                <div class="faq-content">
+                    <p>
+                        ¡Claro que sí! Llevamos un kit premium de props (gafas,
+                        sombreros, letreros divertidos y máquinas de
+                        burbujas/humo según el paquete) para que cada video sea
+                        único.
+                    </p>
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
+<style>
+    .faq-section {
+        padding: 100px 20px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+        font-size: var(--font-size-xl);
+    }
+
+    .faq-container {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .faq-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item[open] {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: var(--neon-secondary);
+    }
+
+    summary {
+        padding: 24px 30px;
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        font-size: 1.1rem;
+        color: var(--text-color);
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    summary i {
+        font-size: 0.9rem;
+        transition: transform 0.3s ease;
+        color: var(--neon-secondary);
+    }
+
+    .faq-item[open] summary i {
+        transform: rotate(45deg);
+    }
+
+    .faq-content {
+        padding: 0 30px 24px 30px;
+        color: var(--text-color);
+        opacity: 0.7;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        summary {
+            padding: 20px;
+            font-size: 1rem;
+        }
+        .faq-content {
+            padding: 0 20px 20px 20px;
+        }
+    }
+</style>
+<script>
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+        const details = item as HTMLDetailsElement;
+        details.addEventListener("toggle", () => {
+            if (details.open) {
+                faqItems.forEach((otherItem) => {
+                    const otherDetails = otherItem as HTMLDetailsElement;
+                    if (otherDetails !== details && otherDetails.open) {
+                        otherDetails.open = false;
+                    }
+                });
+            }
+        });
+    });
+</script>

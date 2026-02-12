@@ -1,0 +1,276 @@
+---
+
+---
+
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-grid">
+            <!-- BRAND -->
+            <div class="footer-brand">
+                <img
+                    src="/up-party-rentals-footer.png"
+                    alt="Logo Up"
+                    class="footer-logo"
+                />
+                <p class="brand-tagline">
+                    Llevamos la diversión de tu evento al siguiente nivel con
+                    tecnología 360° en San Andrés Islas.
+                </p>
+                <div class="social-links">
+                    <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        aria-label="Instagram"
+                        ><i class="fab fa-instagram"></i></a
+                    >
+                    <a
+                        href="https://tiktok.com"
+                        target="_blank"
+                        aria-label="TikTok"><i class="fab fa-tiktok"></i></a
+                    >
+                    <a
+                        href="https://facebook.com"
+                        target="_blank"
+                        aria-label="Facebook"
+                        ><i class="fab fa-facebook-f"></i></a
+                    >
+                </div>
+            </div>
+
+            <!-- QUICK LINKS -->
+            <div class="footer-links">
+                <h4>Navegación</h4>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/photobooth">Photobooth 360</a></li>
+                    <li><a href="/fiestas-y-eventos">Fiestas y Eventos</a></li>
+                    <li><a href="#">Galería</a></li>
+                </ul>
+            </div>
+
+            <!-- CONTACT -->
+            <div class="footer-contact">
+                <h4>Contacto</h4>
+                <p>
+                    <i class="fas fa-map-marker-alt"></i> San Andrés Islas, Colombia
+                </p>
+                <p><i class="fas fa-phone"></i> +57 321 000 0000</p>
+                <a href="https://wa.me/573210000000" class="whatsapp-footer">
+                    <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                &copy; {new Date().getFullYear()} UP! Party Rentals. Todos los derechos
+                reservados.
+            </p>
+            <div class="legal-links">
+                <a href="#">Privacidad</a>
+                <a href="#">Términos</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .main-footer {
+        background: linear-gradient(to bottom, #0a0a0a, #000);
+        position: relative;
+        padding: 80px 20px 30px;
+        color: #fff;
+        overflow: hidden;
+    }
+
+    /* ALIVE FOOTER BLOBS */
+    .main-footer::before {
+        content: "";
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        width: 300px;
+        height: 300px;
+        background: var(--neon-purple);
+        filter: blur(80px);
+        opacity: 0.15;
+        border-radius: 50%;
+        animation: floatBlob 10s infinite alternate;
+    }
+
+    .main-footer::after {
+        content: "";
+        position: absolute;
+        bottom: -50px;
+        right: -50px;
+        width: 400px;
+        height: 400px;
+        background: var(--neon-blue);
+        filter: blur(100px);
+        opacity: 0.1;
+        border-radius: 50%;
+        animation: floatBlob 15s infinite alternate-reverse;
+    }
+
+    @keyframes floatBlob {
+        0% {
+            transform: translate(0, 0);
+        }
+        100% {
+            transform: translate(30px, 50px);
+        }
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 60px;
+    }
+
+    .footer-logo {
+        max-height: 85px;
+        width: auto;
+        object-fit: contain;
+        margin-bottom: 20px;
+    }
+
+    .brand-tagline {
+        color: rgba(255, 255, 255, 0.6);
+        max-width: 400px;
+        line-height: 1.6;
+        margin-bottom: 25px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-links a {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-links a:hover {
+        background: var(--neon-secondary);
+        color: #000;
+        transform: translateY(-3px);
+        box-shadow: 0 0 15px var(--neon-secondary);
+    }
+
+    .footer-links h4,
+    .footer-contact h4 {
+        font-size: 1.2rem;
+        margin-bottom: 25px;
+        color: var(--neon-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 12px;
+    }
+
+    .footer-links a {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+        color: #fff;
+    }
+
+    .footer-contact p {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .footer-contact i {
+        color: var(--neon-secondary);
+    }
+
+    .whatsapp-footer {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #25d366;
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: bold;
+        margin-top: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    .whatsapp-footer:hover {
+        transform: scale(1.05);
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.4);
+    }
+
+    .legal-links {
+        display: flex;
+        gap: 20px;
+    }
+
+    .legal-links a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    @media (max-width: 900px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-contact p {
+            justify-content: center;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+</style>

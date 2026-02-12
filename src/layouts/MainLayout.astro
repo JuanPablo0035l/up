@@ -14,6 +14,24 @@ const { title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title}</title>
+		<meta
+			name="description"
+			content="Alquiler de fotocabinas 360° en San Andrés Isla, Colombia. Dale un toque legendario a tu boda, fiesta o evento empresarial. ¡Reserva ahora!"
+		/>
+		<meta
+			name="keywords"
+			content="fotocabina 360, san andres isla, alquiler 360, eventos san andres, up party rentals"
+		/>
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta
+			property="og:description"
+			content="Experiencias inmersivas 360° en la mejor isla del Caribe."
+		/>
+		<meta property="og:image" content="/img/og-image.jpg" />
+
 		<link
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -33,6 +51,11 @@ const { title } = Astro.props;
 			href="/apple-touch-icon.png"
 		/>
 		<link rel="manifest" href="/site.webmanifest" />
+		<!-- 3D Model Viewer -->
+		<script
+			type="module"
+			src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"
+		></script>
 	</head>
 	<body>
 		<div class="menu-overlay" id="menu-overlay"></div>
@@ -62,18 +85,38 @@ const { title } = Astro.props;
 							<li class="nav-item">
 								<a href="/" class="nav-link">Inicio</a>
 							</li>
+							<li class="nav-item dropdown">
+								<a href="#" class="nav-link"
+									>Servicios <i class="fas fa-chevron-down"
+									></i></a
+								>
+								<ul class="dropdown-menu">
+									<li>
+										<a href="/photobooth">Photobooth 360</a>
+									</li>
+									<li>
+										<a href="/fiestas-y-eventos"
+											>Fiestas y Eventos</a
+										>
+									</li>
+								</ul>
+							</li>
 							<li class="nav-item">
-								<a href="/photobooth" class="nav-link"
-									>Photobooth</a
+								<a href="/galeria" class="nav-link">Galeria</a>
+							</li>
+							<li class="nav-item">
+								<a href="#contacto" class="nav-link">Contacto</a
 								>
 							</li>
 							<li class="nav-item">
-								<a href="/fiestas-y-eventos" class="nav-link"
-									>Fiestas y Eventos</a
+								<button
+									id="theme-toggle"
+									class="theme-toggle-btn"
+									aria-label="Cambiar tema"
 								>
-							</li>
-							<li class="nav-item">
-								<a href="#" class="nav-link">Galeria</a>
+									<i class="fas fa-moon"></i>
+									<i class="fas fa-sun"></i>
+								</button>
 							</li>
 						</ul>
 
@@ -88,16 +131,224 @@ const { title } = Astro.props;
 					<slot />
 				</main>
 
-				<div class="lines">
-					<div class="line"></div>
-					<div class="line"></div>
-					<div class="line"></div>
-				</div>
+				<!-- WhatsApp Floating Button -->
+				<a
+					href="https://wa.me/yournumberhere"
+					class="whatsapp-btn"
+					target="_blank"
+					aria-label="WhatsApp"
+				>
+					<i class="fab fa-whatsapp"></i>
+				</a>
 			</div>
 		</div>
 
+		<style is:global>
+			/* Dropdown Styles */
+			.nav-item.dropdown {
+				position: relative;
+			}
+			.dropdown-menu {
+				position: absolute;
+				top: 100%;
+				left: 0;
+				background: var(--header-bg);
+				backdrop-filter: blur(10px);
+				min-width: 200px;
+				border-radius: 12px;
+				box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+				padding: 10px 0;
+				opacity: 0;
+				visibility: hidden;
+				transform: translateY(10px);
+				transition: all 0.3s ease;
+				border: 1px solid var(--border-color);
+				z-index: 100;
+			}
+			.nav-item.dropdown:hover .dropdown-menu {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+			}
+			.dropdown-menu li a {
+				display: block;
+				padding: 10px 20px;
+				color: var(--text-color);
+				font-size: 0.95rem;
+				transition: background 0.2s;
+			}
+			.dropdown-menu li a:hover {
+				background: rgba(120, 62, 140, 0.1);
+				color: var(--brand-purple);
+			}
+
+			/* Theme Toggle Button */
+			.theme-toggle-btn {
+				background: none;
+				border: 1px solid var(--border-color);
+				color: var(
+					--brand-purple
+				); /* Purple moon by default in light mode */
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				cursor: pointer;
+				transition: all 0.3s;
+				font-size: 1.1rem;
+			}
+			.theme-toggle-btn:hover {
+				background: var(--border-color);
+				transform: rotate(15deg);
+				box-shadow: 0 0 15px rgba(120, 62, 140, 0.3);
+			}
+			.theme-toggle-btn .fa-sun {
+				display: none;
+			}
+			[data-theme="dark"] .theme-toggle-btn .fa-moon {
+				display: none;
+			}
+			[data-theme="dark"] .theme-toggle-btn .fa-sun {
+				display: block;
+			}
+
+			[data-theme="dark"] .theme-toggle-btn {
+				color: #f1c40f;
+				border-color: rgba(241, 196, 15, 0.3);
+				box-shadow: 0 0 15px rgba(241, 196, 15, 0.2);
+			}
+
+			.whatsapp-btn {
+				position: fixed;
+				bottom: 30px;
+				right: 30px;
+				width: 60px;
+				height: 60px;
+				background-color: #25d366;
+				color: white;
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 35px;
+				box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+				z-index: 1000;
+				transition:
+					transform 0.3s ease,
+					box-shadow 0.3s ease;
+				text-decoration: none;
+			}
+			.whatsapp-btn:hover {
+				transform: scale(1.1);
+				box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+			}
+
+			/* Mobile Adjustments for Dropdown */
+			@media (max-width: 768px) {
+				.nav-menu {
+					background: rgba(
+						0,
+						0,
+						0,
+						0.9
+					) !important; /* Solid dark for visibility */
+					backdrop-filter: blur(20px);
+					-webkit-backdrop-filter: blur(20px);
+				}
+
+				/* Force white text in mobile menu regardless of theme */
+				.nav-menu .nav-link,
+				.nav-menu .nav-item.dropdown > a,
+				.nav-menu .dropdown-menu li a {
+					color: #ffffff !important;
+				}
+
+				.dropdown-menu {
+					position: static;
+					opacity: 1;
+					visibility: visible;
+					transform: none;
+					background: rgba(255, 255, 255, 0.05);
+					box-shadow: none;
+					border: none;
+					padding-left: 20px;
+					display: none;
+					width: 100%;
+				}
+				.nav-item.dropdown.active .dropdown-menu {
+					display: block;
+				}
+				.nav-item.dropdown.active > a i {
+					transform: rotate(180deg);
+				}
+			}
+		</style>
+
 		<script>
 			import "../scripts/header.js";
+
+			const themeToggle = document.getElementById("theme-toggle");
+			const html = document.documentElement;
+
+			// 1. Initial Theme Setup
+			const savedTheme = localStorage.getItem("theme");
+			const theme = (() => {
+				if (
+					typeof localStorage !== "undefined" &&
+					localStorage.getItem("theme")
+				) {
+					return localStorage.getItem("theme");
+				}
+				if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+					return "dark";
+				}
+				return "light";
+			})();
+
+			if (theme === "light") {
+				document.documentElement.classList.remove("dark");
+				document.documentElement.setAttribute("data-theme", "light");
+			} else {
+				document.documentElement.classList.add("dark");
+				document.documentElement.setAttribute("data-theme", "dark");
+			}
+
+			window.localStorage.setItem("theme", theme || "dark");
+
+			// 2. Toggle Event
+			themeToggle?.addEventListener("click", () => {
+				const currentTheme = html.getAttribute("data-theme");
+				const newTheme = currentTheme === "dark" ? "light" : "dark";
+
+				html.setAttribute("data-theme", newTheme);
+				localStorage.setItem("theme", newTheme);
+			});
+
+			// 3. Mobile Dropdown Toggle
+			const dropdown = document.querySelector(".nav-item.dropdown");
+			const dropdownLink = dropdown?.querySelector("a");
+
+			dropdownLink?.addEventListener("click", (e) => {
+				if (window.innerWidth <= 768) {
+					// If not active, prevent and show. If active, let it navigate.
+					if (!dropdown?.classList.contains("active")) {
+						e.preventDefault();
+						dropdown?.classList.add("active");
+					}
+				}
+			});
+
+			// Close dropdown if clicking outside
+			document.addEventListener("click", (e) => {
+				if (window.innerWidth <= 768) {
+					const target = e.target as HTMLElement;
+					if (!dropdown?.contains(target)) {
+						dropdown?.classList.remove("active");
+					}
+				}
+			});
 		</script>
 		<script is:inline src="/js/script.js"></script>
 	</body>

@@ -42,6 +42,13 @@ async function initRoadrunnerTitle() {
             charsClass: 'char-split'
         });
         chars = splitInstance.chars;
+
+        // Add specific class to '0' digit
+        chars.forEach(char => {
+            if (char.textContent === '0') {
+                char.classList.add('char-zero');
+            }
+        });
     } else {
         const text = title.textContent.trim();
         title.innerHTML = '';
@@ -57,6 +64,7 @@ async function initRoadrunnerTitle() {
                 const span = document.createElement('span');
                 span.textContent = char;
                 span.className = 'char-split';
+                if (char === '0') span.classList.add('char-zero');
                 wordSpan.appendChild(span);
                 chars.push(span);
             });
@@ -115,6 +123,9 @@ function startLetterFlicker(chars) {
 
         for (let i = 0; i < count; i++) {
             const char = chars[Math.floor(Math.random() * chars.length)];
+
+            // Skip the "0" if it has the special class to keep its specific styling
+            if (char.classList.contains('char-zero')) continue;
 
             gsap.to(char, {
                 textShadow: "0 0 8px #783e8c, 0 0 15px #783e8c",
@@ -277,6 +288,24 @@ function initPerformanceHandlers() {
             ScrollTrigger.refresh();
         }, 250);
     });
+
+    // --- MENU STATE OBSERVER (Pause flicker/Resource saving) ---
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.attributeName === 'class') {
+                const isMenuOpen = document.body.classList.contains('show-mobile-menu');
+                if (isMenuOpen) {
+                    flickerActive = false;
+                    gsap.killDelayedCallsTo(window._flickerLoop);
+                } else {
+                    flickerActive = true;
+                    if (window._flickerLoop) window._flickerLoop();
+                }
+            }
+        });
+    });
+
+    observer.observe(document.body, { attributes: true });
 
     document.addEventListener('visibilitychange', () => {
         const video = document.querySelector('#scrolly-video');

@@ -1,7 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import "../styles/photobooth.css";
-
+import Footer from "../components/Footer.astro";
 
 // Video path (place your video in public/videos/ folder)
 const videoPath = "/videos/video_pro.mp4";
@@ -13,10 +13,10 @@ const staticImagePath = "/img/template-image-photobooth.jpeg";
     <section class="hero-section">
         <h1 class="roadrunner-title">DESCUBRE NUESTRA 360</h1>
         <div class="scroll-wrapper">
-  <div class="scroll-hint">
-    Desliza para explorar <span class="arrow">↓</span>
-  </div>
-</div>
+            <div class="scroll-hint">
+                Desliza para explorar <span class="arrow">↓</span>
+            </div>
+        </div>
     </section>
 
     <!-- EXPERIENCE PINNED AREA -->
@@ -87,33 +87,143 @@ const staticImagePath = "/img/template-image-photobooth.jpeg";
         </div>
     </section>
 
-    <!-- CONTACT SECTION -->
+    <!-- CONTACT & PRICING SECTION -->
     <section class="spacer">
         <h2>¿Listo para lo Pro?</h2>
         <p style="opacity: 0.7; margin-bottom: 2rem;">
-            Hacemos que tu evento sea inolvidable.
+            Hacemos que tu evento en San Andrés sea inolvidable.
         </p>
-        <a
-            href="#"
-            style="background: var(--accent); color: #fff; padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; transition: transform 0.3s ease;"
-        >
-            Cotizar Evento
-        </a>
+
+        <button id="cta-cotizar" class="cta-button"> Cotizar Evento </button>
+
+        <div id="pricing-container" class="pricing-hidden">
+            <div class="pricing-grid">
+                <!-- BASIC -->
+                <div class="price-card">
+                    <div class="badge">Básico</div>
+                    <h3>Plan Básico</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-clock"></i> 1 Hora: <strong
+                                >$270.000</strong
+                            >
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i> 2 Horas: <strong
+                                >$320.000</strong
+                            >
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i> 3 Horas: <strong
+                                >$420.000</strong
+                            >
+                        </li>
+                    </ul>
+                    <p class="note">Sin iluminación ni props</p>
+                    <a
+                        href="https://wa.me/573210000000?text=Hola!%20Me%20interesa%20el%20Plan%20Básico"
+                        class="btn-wa">Reservar por WhatsApp</a
+                    >
+                </div>
+
+                <!-- VIP -->
+                <div class="price-card vip">
+                    <div class="badge">Recomendado</div>
+                    <h3>Plan FULL</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-clock"></i> 1 Hora: <strong
+                                >$350.000</strong
+                            >
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i> 2 Horas: <strong
+                                >$480.000</strong
+                            >
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i> 3 Horas: <strong
+                                >$600.000</strong
+                            >
+                        </li>
+                    </ul>
+                    <p class="note">Incluye Iluminación + Props (Obsequio)</p>
+                    <a
+                        href="https://wa.me/573210000000?text=Hola!%20Me%20interesa%20el%20Plan%20VIP"
+                        class="btn-wa">Reservar por WhatsApp</a
+                    >
+                </div>
+            </div>
+
+            <div class="corporate-banner">
+                <div class="corp-content">
+                    <h3>¿Evento de más de 3 horas?</h3>
+                    <p>
+                        Solución ideal para Empresas y Congresos en San Andrés.
+                    </p>
+                    <form class="corporate-form">
+                        <input
+                            type="text"
+                            placeholder="Nombre de la Empresa"
+                            required
+                        />
+                        <input
+                            type="email"
+                            placeholder="Email de contacto"
+                            required
+                        />
+                        <textarea
+                            placeholder="Cuéntanos sobre tu evento..."
+                            rows="3"></textarea>
+                        <button type="submit" class="btn-submit"
+                            >Enviar solicitud corporativa</button
+                        >
+                    </form>
+                    <p class="wa-direct">
+                        O hablemos ahora: <a href="https://wa.me/573210000000"
+                            >WhatsApp Directo</a
+                        >
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
+
+    <Footer />
 
     <script>
         import { init360Experience } from "../scripts/photobooth.js";
-        // Final sanity check for DOM readiness
-        if (document.readyState !== "loading") {
-            init360Experience();
-        } else {
-            document.addEventListener("DOMContentLoaded", init360Experience);
+        init360Experience();
+
+        import { setupScrollAnimation } from "../scripts/animacionFlecha.js";
+        setupScrollAnimation();
+
+        // 1. Toggle Pricing Section
+        const ctaBtn = document.getElementById("cta-cotizar");
+        const pricingContainer = document.getElementById("pricing-container");
+
+        if (ctaBtn && pricingContainer) {
+            ctaBtn.addEventListener("click", () => {
+                pricingContainer.classList.toggle("pricing-hidden");
+                pricingContainer.classList.toggle("pricing-visible");
+
+                if (pricingContainer.classList.contains("pricing-visible")) {
+                    pricingContainer.scrollIntoView({ behavior: "smooth" });
+                }
+            });
         }
-        import {setupScrollAnimation} from "../scripts/animacionFlecha.js";
-        if (document.readyState !== "loading") {
-            setupScrollAnimation();
-        } else {
-            document.addEventListener("DOMContentLoaded", setupScrollAnimation);
+
+        // 2. Form Submission (Simulated)
+        const form = document.querySelector(".corporate-form");
+        if (form) {
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                alert(
+                    "¡Gracias! Hemos recibido tu solicitud corporativa. Te contactaremos en menos de 24 horas.",
+                );
+                const corporateForm = form as HTMLFormElement;
+                corporateForm.reset();
+            });
         }
     </script>
 </MainLayout>
