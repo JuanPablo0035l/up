@@ -10,25 +10,41 @@ import Footer from "../components/Footer.astro";
 <MainLayout title="Up Party Rentals - Inicio">
     <!-- BAND 1: HERO SECTION -->
     <section class="hero-section">
+        <div class="hero-bg"></div>
         <div class="section-content">
             <div class="hero-details">
                 <h1 class="title">
-                    <div>MOMENTOS</div>
-                    <div>LEGENDARIOS</div>
+                    <div>TU EVENTO CON</div>
+                    <div>VIDEOS 360°</div>
                 </h1>
-                <h2 class="subtitle">ALQUILER DE FOTOCABINAS 360°</h2>
+                <h2 class="subtitle">QUE TODOS VAN A COMPARTIR</h2>
                 <p class="description">
-                    Experiencias 360° y props premium en **San Andrés Isla**.
-                    Transformamos cada evento en un momento Legendario.
+                    Tus invitados se graban en cámara lenta, reciben su video en
+                    15 segundos y lo comparten en redes. Tu evento se vuelve
+                    inolvidable.
                 </p>
                 <div class="buttons">
-                    <a href="https://wa.me/573210000000" class="button Agenda"
-                        >¡RESERVA AHORA!</a
+                    <a href="/photobooth#plan-experiencia" class="button Agenda"
+                        >VER PLAN Y PRECIO →</a
+                    >
+                    <a
+                        href="https://wa.me/573210000000?text=Hola!%20Quiero%20info%20sobre%20la%20360%20para%20mi%20evento"
+                        class="button ghost"
+                        style="border-color: white; color: white;"
+                        >PREGUNTAR POR WHATSAPP</a
                     >
                 </div>
             </div>
 
             <div class="mascot-container" id="mascot-3d">
+                <div class="mascot-tooltip">
+                    <i class="fas fa-palm-tree" style="color: #2db84c;"></i> Expertos
+                    en Eventos <br />
+                    en San Andrés. <br />
+                    <span class="highlight"
+                        >Equipo 2026 <span class="badge-new">Nuevo</span></span
+                    >
+                </div>
                 <model-viewer
                     src="/models/Meshy_AI_Violet_Robo_0211220642_texture.glb"
                     alt="Up Party Mascot"
@@ -199,7 +215,56 @@ import Footer from "../components/Footer.astro";
         </div>
     </section>
 
+    <!-- TRUST SECTION: Credenciales reales -->
+    <section class="section-band trust-section">
+        <div class="section-content">
+            <h2 class="trust-title">¿Por qué elegirnos?</h2>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon"><i class="fas fa-video"></i></div>
+                    <h3>Equipo Profesional 4K</h3>
+                    <p>
+                        Tecnología de gama alta para resultados cinematográficos
+                    </p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Video Listo en 15 seg</h3>
+                    <p>Tus invitados lo descargan y comparten al instante</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Todo Incluido</h3>
+                    <p>Luces, props, staff y transporte. Sin costos ocultos</p>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>1 Evento por Día</h3>
+                    <p>Atención 100% dedicada a tu celebración</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <HowItWorks />
+
+    <!-- URGENCY BAR -->
+    <section class="urgency-bar">
+        <div class="urgency-content">
+            <i class="fas fa-calendar-alt"></i>
+            <p>
+                 <strong>Agenda limitada</strong> — Solo atendemos 1 evento por
+                día en San Andrés. <a href="/photobooth#plan-experiencia"
+                    >Reserva tu fecha →</a
+                >
+            </p>
+        </div>
+    </section>
+
     <FAQ />
     <Footer />
 

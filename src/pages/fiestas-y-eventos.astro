@@ -1,14 +1,132 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import "../styles/fiestas-y-eventos.css";
 import "../styles/main.css";
-import "../styles/lines-effect.css";            
+import Footer from "../components/Footer.astro";
 ---
 
-<MainLayout title="Fiestas y Eventos">
-   <!-- HERO -->
-    <section class="hero-section">
-        <h1 class="title">NO DISPONIBLE POR EL MOMENTO</h1>
+<MainLayout title="Fiestas y Eventos | Up Party Rentals">
+    <section class="coming-soon-hero">
+        <div class="coming-content">
+            <div class="coming-icon">🎉</div>
+            <h1 class="coming-title">FIESTAS Y EVENTOS</h1>
+            <h2 class="coming-subtitle">Muy Pronto en San Andrés</h2>
+            <p class="coming-desc">
+                Estamos preparando algo increíble: catering premium y juegos de
+                feria para llevar tu evento al siguiente nivel. Sé el primero en
+                enterarte.
+            </p>
+            <a
+                href="https://wa.me/573210000000?text=Hola!%20Me%20interesa%20el%20servicio%20de%20Fiestas%20y%20Eventos%20cuando%20esté%20disponible"
+                class="coming-cta"
+            >
+                <i class="fab fa-whatsapp"></i> Avísame cuando esté listo
+            </a>
+            <div class="coming-divider"></div>
+            <p class="coming-meanwhile">
+                Mientras tanto, conoce nuestra <a href="/photobooth"
+                    >Experiencia 360°</a
+                > 🚀
+            </p>
+        </div>
     </section>
-    
+
+    <Footer />
 </MainLayout>
+
+<style>
+    .coming-soon-hero {
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 120px 20px 60px;
+        text-align: center;
+    }
+
+    .coming-content {
+        max-width: 600px;
+    }
+
+    .coming-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-15px);
+        }
+    }
+
+    .coming-title {
+        font-family: var(--font-heading, "Archivo Black", sans-serif);
+        font-size: clamp(2.5rem, 8vw, 4.5rem);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+        line-height: 1;
+    }
+
+    .coming-subtitle {
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: var(--neon-secondary, #fe13bb);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .coming-desc {
+        font-size: 1.15rem;
+        opacity: 0.75;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+    }
+
+    .coming-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #25d366;
+        color: #fff;
+        padding: 16px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+    }
+
+    .coming-cta:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+    }
+
+    .coming-divider {
+        width: 60px;
+        height: 2px;
+        background: rgba(255, 255, 255, 0.15);
+        margin: 2.5rem auto;
+    }
+
+    .coming-meanwhile {
+        font-size: 1rem;
+        opacity: 0.6;
+    }
+
+    .coming-meanwhile a {
+        color: var(--neon-secondary, #fe13bb);
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .coming-meanwhile a:hover {
+        text-decoration: underline;
+    }
+</style>

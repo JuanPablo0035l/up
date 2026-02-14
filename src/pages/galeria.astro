@@ -15,17 +15,55 @@ import Footer from "../components/Footer.astro";
 
     <section class="gallery-grid-container">
         <div class="gallery-grid">
-            <!-- Placeholders for future photos -->
-            {
-                [1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
-                    <div class="gallery-item">
-                        <div class="image-placeholder">
-                            <i class="fas fa-camera" />
-                            <span>Próximamente</span>
-                        </div>
-                    </div>
-                ))
-            }
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=800&auto=format&fit=crop"
+                    alt="Evento con luces y ambiente de fiesta"
+                    loading="lazy"
+                />
+            </div>
+            <div class="gallery-item">
+                <img
+                    src="/img/360-photo-booth-pro-automatic-infinity-mirror-360-camera-booth-360-video-booth-24.jpg"
+                    alt="Plataforma 360 con espejo infinity"
+                    loading="lazy"
+                />
+            </div>
+            <div class="gallery-item">
+                <img
+                    src="https://www.shutterstock.com/shutterstock/photos/2528409143/display_1500/stock-photo-a-degree-photo-booth-setup-with-led-lights-and-a-rotating-platform-surrounded-by-floral-2528409143.jpg"
+                    alt="Photobooth 360 con decoración floral"
+                    loading="lazy"
+                />
+            </div>
+            <div class="gallery-item">
+                <img
+                    src="https://www.shutterstock.com/shutterstock/photos/2414591175/display_1500/stock-photo-riga-latvia-december-person-standing-on-a-degree-photo-booth-platform-often-2414591175.jpg"
+                    alt="Persona en la plataforma 360"
+                    loading="lazy"
+                />
+            </div>
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1765947390055-c5187b491ba0?q=80&w=687&auto=format&fit=crop"
+                    alt="Equipo profesional de photobooth"
+                    loading="lazy"
+                />
+            </div>
+            <div class="gallery-item">
+                <img
+                    src="https://www.visioncaptis.com/cdn/shop/files/WhatsAppImage2024-10-12at12.46.16_1.jpg?v=1728753178&width=1445"
+                    alt="Montaje de plataforma 360 en evento"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+
+        <div class="gallery-cta">
+            <p>¿Quieres esto en tu evento?</p>
+            <a href="/photobooth#plan-experiencia" class="gallery-btn"
+                >Ver Plan y Precio →</a
+            >
         </div>
     </section>
 
@@ -60,7 +98,7 @@ import Footer from "../components/Footer.astro";
     .gallery-grid-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 60px 20px 120px;
+        padding: 60px 20px 80px;
     }
 
     .gallery-grid {
@@ -86,25 +124,49 @@ import Footer from "../components/Footer.astro";
         box-shadow: 0 20px 40px rgba(120, 62, 140, 0.2);
     }
 
-    .image-placeholder {
+    .gallery-item img {
         width: 100%;
         height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 15px;
-        color: rgba(255, 255, 255, 0.2);
+        object-fit: cover;
+        transition: transform 0.5s ease;
     }
 
-    .image-placeholder i {
-        font-size: 3rem;
+    .gallery-item:hover img {
+        transform: scale(1.05);
     }
 
-    .image-placeholder span {
+    .gallery-cta {
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .gallery-cta p {
+        font-size: 1.3rem;
+        opacity: 0.7;
+        margin-bottom: 20px;
+    }
+
+    .gallery-btn {
+        display: inline-block;
+        background: var(
+            --brand-gradient,
+            linear-gradient(135deg, #ff0055, #783e8c)
+        );
+        color: white;
+        padding: 18px 45px;
+        border-radius: 60px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 0.8rem;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(254, 19, 187, 0.3);
+    }
+
+    .gallery-btn:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(254, 19, 187, 0.5);
     }
 
     .highlight {

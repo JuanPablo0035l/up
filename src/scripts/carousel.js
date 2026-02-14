@@ -116,12 +116,20 @@ function initPhotoboothCarousel() {
     // startAutoScroll(); // Uncomment for continuous flow
 
     // Better Approach: Snap to next card every few seconds
+    // Better Approach: Snap to next card every few seconds
     setInterval(() => {
-        const cardWidth = 280; // card + gap
+        const firstCard = track.querySelector('.card');
+        if (!firstCard) return;
+
+        const cardStyle = window.getComputedStyle(firstCard);
+        const cardWidth = firstCard.offsetWidth + parseFloat(cardStyle.marginRight) + parseFloat(cardStyle.marginLeft);
+
         const currentScroll = track.scrollLeft;
         const nextScroll = currentScroll + cardWidth;
+        const maxScroll = track.scrollWidth - track.clientWidth;
 
-        if (nextScroll > track.scrollWidth - track.clientWidth) {
+        // Tolerance of 10px to avoid premature looping
+        if (nextScroll >= maxScroll - 10) {
             track.scrollTo({ left: 0, behavior: 'smooth' });
         } else {
             track.scrollTo({ left: nextScroll, behavior: 'smooth' });

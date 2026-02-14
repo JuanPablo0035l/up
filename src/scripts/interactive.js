@@ -4,16 +4,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export function initHighEndAnimations() {
-    // 1. Hero Title Animation (Xiaomi Style)
-    // We try to find SplitText dynamicly or use a fallback
+    // 1. Hero Title Animation & Parallax
+    // Parallax for Hero BG
+    const heroBg = document.querySelector(".hero-bg");
+    if (heroBg) {
+        gsap.to(heroBg, {
+            yPercent: 30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-section",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    }
+
+    // Hero Content Entrance
     const heroTitle = document.querySelector(".hero-section .title");
     if (heroTitle) {
-        // Simple reveal if SplitText is missing
         gsap.from(heroTitle, {
             opacity: 0,
             y: 50,
-            duration: 1.5,
-            ease: "expo.out",
+            scale: 0.95,
+            duration: 1.2,
+            ease: "power3.out",
         });
     }
 
@@ -21,10 +36,34 @@ export function initHighEndAnimations() {
     if (heroSubtitle) {
         gsap.from(heroSubtitle, {
             opacity: 0,
-            x: -50,
+            x: -30,
             duration: 1,
-            delay: 0.3,
+            delay: 0.4,
             ease: "power2.out",
+        });
+    }
+
+    const heroButtons = document.querySelector(".hero-section .buttons");
+    if (heroButtons) {
+        gsap.from(heroButtons, {
+            opacity: 0,
+            y: 20,
+            duration: 1,
+            delay: 0.6,
+            ease: "power2.out",
+        });
+    }
+
+    // Mascot Tooltip Pop
+    const tooltip = document.querySelector(".mascot-tooltip");
+    if (tooltip) {
+        gsap.to(tooltip, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            delay: 1.5,
+            ease: "elastic.out(1, 0.5)"
         });
     }
 
