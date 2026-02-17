@@ -1,0 +1,74 @@
+/* ══════════════════════════════════════════════════════
+   VARIABLES — Design Tokens & Theme Configuration
+   ══════════════════════════════════════════════════════
+   All CSS custom properties for the project.
+   - Brand colors, fonts, spacing, and shared sizes.
+   - Light theme is the default.
+   - Dark theme overrides via [data-theme="dark"].
+   ══════════════════════════════════════════════════════ */
+
+/* ── Font Imports ── */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;800&display=swap');
+
+:root {
+  /* ── Typography ── */
+  --font-heading: 'Archivo Black', sans-serif;
+  --font-heading-alt: 'Montserrat', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+
+  /* ── Brand Colors ── */
+  --brand-pink: #fe13bb;
+  --brand-purple: #783e8c;
+  --brand-gradient: linear-gradient(135deg, var(--brand-pink) 0%, var(--brand-purple) 100%);
+  --whatsapp-green: #25d366;
+
+  /* ── Neon Accents (Footer / Effects) ── */
+  --neon-fucsia: #ff00ea;
+  --neon-purple: #9d00ff;
+  --neon-blue: #00f3ff;
+  --neon-color: #bf00ff;
+  --neon-secondary: #fe13bb;
+  --footer-neon-gradient: linear-gradient(90deg, var(--neon-fucsia), var(--neon-purple), var(--neon-blue));
+
+  /* ── Vibrant Palette ── */
+  --vibrant-gradient: linear-gradient(135deg, #a5f3fc 0%, #9d00ff 50%, #fe13bb 100%);
+  --soft-blue: #f0f9ff;
+  --soft-purple: #f5f3ff;
+  --soft-pink: #fff1f2;
+
+  /* ── Light Theme (Default) ── */
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --header-bg: rgba(255, 255, 255, 0.85);
+  --nav-link-color: #1a1a1a;
+  --card-bg: #ffffff;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --section-impact-bg: var(--soft-blue);
+  --glow-color: rgba(120, 62, 140, 0.1);
+  --section-alt-bg: #f9fafb;
+
+  /* ── Sizing Scale ── */
+  --font-size-s: 0.9rem;
+  --font-size-n: 1rem;
+  --font-size-m: 1.4rem;
+  --font-size-l: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 2.3rem;
+
+  /* ── Spacing & Layout ── */
+  --border-radius-m: 30px;
+  --site-max-width: 1400px;
+}
+
+/* ── Dark Theme Overrides ── */
+[data-theme="dark"] {
+  --bg-color: #050505;
+  --text-color: #ffffff;
+  --header-bg: rgba(0, 0, 0, 0.85);
+  --nav-link-color: #ffffff;
+  --card-bg: #111111;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --section-impact-bg: #0a0a0a;
+  --glow-color: rgba(254, 19, 187, 0.3);
+  --section-alt-bg: #0d0d0d;
+}

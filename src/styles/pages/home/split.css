@@ -1,0 +1,232 @@
+/* ══════════════════════════════════════════════════════
+   SPLIT — 50/50 Content + Image Section
+   ══════════════════════════════════════════════════════
+   Two-column layout with text on one side and an image
+   carousel on the other. Includes vibrant gradient
+   backgrounds and scrolling nav dots.
+   ══════════════════════════════════════════════════════ */
+
+/* ── Vibrant Band Backgrounds ── */
+.section-vibrant {
+    background: var(--vibrant-gradient);
+    background-size: 200% 200%;
+    animation: aliveGradient 8s ease infinite;
+    color: white;
+    padding: 120px 20px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+[data-theme="light"] .section-vibrant {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+[data-theme="dark"] .section-vibrant {
+    background: linear-gradient(to left, #1e69a4, #205a98, #254a8b, #2a3a7d, #2e2a6e, #232c6e, #152e6d, #00306b, #003f6f, #004b6a, #005561, #1f5d59);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+@keyframes aliveGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ── Split Container ── */
+.split-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: var(--site-max-width);
+    margin: 0 auto;
+}
+
+.split-side {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+/* ── Split Typography ── */
+.split-side .title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 2rem;
+}
+
+.split-side .text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    opacity: 0.9;
+    margin-bottom: 2.5rem;
+}
+
+/* ── Image Carousel Container ── */
+.split-image-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    height: 500px;
+    position: relative;
+    display: flex;
+}
+
+[data-theme="light"] .split-image-container {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+}
+
+.split-image-container img {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* ── Split Carousel Track ── */
+.split-carousel-track {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.split-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.split-carousel-track img {
+    flex: 0 0 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scroll-snap-align: start;
+}
+
+/* ── Split Nav Buttons ── */
+.split-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.split-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.split-nav-btn.prev {
+    left: 15px;
+}
+
+.split-nav-btn.next {
+    right: 15px;
+}
+
+.split-nav-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* ── Split Dots ── */
+.split-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.split-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.split-dot.active {
+    background: white;
+    transform: scale(1.2);
+}
+
+/* ══════════════════════════════════════════════════════
+   TABLET (769–1024px)
+   ══════════════════════════════════════════════════════ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .section-vibrant {
+        padding: 80px 20px;
+    }
+
+    .split-container {
+        gap: 30px;
+    }
+
+    .split-image-container {
+        height: 380px;
+    }
+
+    .split-side .title {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .split-side .text {
+        font-size: 1.05rem;
+    }
+}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE (≤ 900px)
+   ══════════════════════════════════════════════════════ */
+@media screen and (max-width: 900px) {
+    .split-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .split-side {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .split-image-container {
+        height: 350px;
+    }
+}

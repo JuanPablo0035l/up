@@ -1,4 +1,10 @@
-
+/**
+ * ── MODULE: Carousel Controllers ──
+ * @description Manages scroll-snap carousels with dot navigation.
+ *   - initSplitCarousel(): 50/50 split section image carousel
+ *   - initPhotoboothCarousel(): Horizontal card carousel with auto-scroll
+ * @see ../styles/pages/home/split.css
+ */
 export function initCarousels() {
     initSplitCarousel();
     initPhotoboothCarousel();

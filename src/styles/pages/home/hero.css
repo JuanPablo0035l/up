@@ -1,0 +1,351 @@
+/* ══════════════════════════════════════════════════════
+   HERO — Homepage Hero Section
+   ══════════════════════════════════════════════════════
+   Full-viewport hero with:
+   - Parallax background image (light/dark variants)
+   - Mascot 3D model (hidden on mobile)
+   - Title, subtitle, description, and CTA buttons
+   - Background waves decorative effect
+   ══════════════════════════════════════════════════════ */
+
+/* ── Decorative Background Waves ── */
+.background-waves {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(254, 19, 187, 0.03) 0%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    animation: wavemove 20s infinite alternate ease-in-out;
+}
+
+@keyframes wavemove {
+    from {
+        transform: translate(-10%, -10%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(0%, 0%) rotate(5deg);
+    }
+}
+
+/* ── Hero Section ── */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-top: 100px;
+    padding-bottom: 50px;
+    z-index: 5;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* ── Hero Background (Parallax via interactive.js) ── */
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    /* Extra height for parallax shift */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    z-index: 0;
+    will-change: transform;
+}
+
+[data-theme="dark"] .hero-bg {
+    background-image: url('/img/Hero-background-darkmode.png');
+    filter: brightness(0.6);
+}
+
+[data-theme="light"] .hero-bg {
+    background-image: url('/img/Hero-background-lightmode.jpg');
+    filter: brightness(0.8);
+}
+
+/* ── Dark Overlay ── */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+[data-theme="light"] .hero-section::before {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.4) 100%);
+}
+
+/* ── Hero Content Layout ── */
+.hero-section .section-content {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: auto;
+    gap: 2rem;
+}
+
+.hero-section .hero-details {
+    max-width: 1000px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ── Hero Typography ── */
+.hero-section .hero-details .title {
+    font-family: var(--font-heading);
+    font-weight: 900;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    text-transform: uppercase;
+    line-height: 0.9;
+    letter-spacing: 0.1em;
+    margin-bottom: 2rem;
+    color: var(--text-color);
+    background: none;
+    -webkit-text-fill-color: initial;
+    animation: none;
+    text-shadow: none;
+}
+
+.hero-section .hero-details .subtitle {
+    font-size: clamp(1.2rem, 2.5vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    color: var(--brand-pink);
+    max-width: 100%;
+    letter-spacing: 2px;
+    background: rgba(254, 19, 187, 0.1);
+    padding: 5px 15px;
+    border-left: 4px solid var(--brand-pink);
+    display: inline-block;
+}
+
+.hero-section .hero-details .description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 3.5rem;
+    opacity: 0.8;
+}
+
+.hero-section .hero-details .buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* ── Mascot Container & Animation ── */
+.mascot-container {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    z-index: 10;
+    pointer-events: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+#mascot-3d {
+    animation: freefall 2.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 20;
+    width: 100%;
+    max-width: 220px;
+    max-height: 220px;
+    filter: drop-shadow(0 0 15px var(--glow-color));
+}
+
+@keyframes freefall {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(20px) rotate(5deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(-5deg);
+    }
+}
+
+/* ── Mascot Tooltip (Animated via GSAP) ── */
+.mascot-tooltip {
+    position: absolute;
+    top: -80px;
+    right: 20px;
+    background: white;
+    color: #333;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    z-index: 50;
+    max-width: 200px;
+    text-align: left;
+    line-height: 1.4;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+}
+
+.mascot-tooltip::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 30px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: rotate(45deg);
+}
+
+.mascot-tooltip .highlight {
+    display: block;
+    color: var(--brand-pink);
+    font-weight: 800;
+    margin-top: 4px;
+}
+
+.mascot-tooltip .badge-new {
+    background: var(--neon-color);
+    color: white;
+    font-size: 0.7em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════════════════
+   TABLET (769–1024px)
+   ══════════════════════════════════════════════════════ */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .hero-section .hero-details .title {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+    }
+
+    .hero-section .hero-details .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+
+    .mascot-container {
+        width: 200px;
+        height: 200px;
+        bottom: 20px;
+    }
+
+    #mascot-3d {
+        max-width: 160px;
+        max-height: 160px;
+    }
+}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE (≤ 768px)
+   ══════════════════════════════════════════════════════ */
+@media screen and (max-width: 768px) {
+    .hero-section {
+        padding: 120px 0 20px;
+        min-height: auto;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-bg {
+        height: 115%;
+        background-position: center top;
+    }
+
+    .hero-section .section-content {
+        min-height: auto;
+        flex-direction: column;
+        text-align: center;
+        gap: 0;
+        padding: 0 20px;
+    }
+
+    .hero-section .hero-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .hero-section .hero-details .title {
+        font-size: var(--font-size-xxl);
+        line-height: 1.1;
+        margin-bottom: 32px;
+        letter-spacing: -0.02em;
+    }
+
+    .hero-section .hero-details .subtitle {
+        font-size: var(--font-size-xl);
+        max-width: 100%;
+        margin-top: 0;
+        margin-bottom: 24px;
+        line-height: 1.2;
+    }
+
+    .hero-section .hero-details .description {
+        font-size: var(--font-size-n);
+        max-width: 100%;
+        margin: 0 0 48px;
+        text-align: justify;
+        line-height: 1.7;
+        opacity: 0.9;
+    }
+
+    .hero-section .hero-details .buttons {
+        width: 100%;
+        justify-content: center;
+        margin-top: 8px;
+    }
+
+    .hero-section .hero-image-wrapper {
+        display: none;
+    }
+
+    .mascot-container {
+        display: none !important;
+    }
+}
+
+/* ═══ Small Phones (≤ 500px) ═══ */
+@media screen and (max-width: 500px) {
+    .hero-section .hero-details .buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .hero-section .hero-details .buttons .button {
+        width: 100%;
+        text-align: center;
+        padding: 16px 30px;
+        font-size: 0.95rem;
+    }
+}

@@ -1,0 +1,65 @@
+/* ══════════════════════════════════════════════════════
+   URGENCY — Urgency / Scarcity Bar
+   ══════════════════════════════════════════════════════
+   Thin banner with icon + text encouraging action.
+   Used between content sections.
+   ══════════════════════════════════════════════════════ */
+
+.urgency-bar {
+    background: linear-gradient(135deg, rgba(254, 19, 187, 0.15) 0%, rgba(120, 62, 140, 0.15) 100%);
+    border-top: 1px solid rgba(254, 19, 187, 0.2);
+    border-bottom: 1px solid rgba(254, 19, 187, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+.urgency-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.urgency-content i {
+    color: var(--neon-secondary);
+    font-size: 1.3rem;
+}
+
+.urgency-content p {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.urgency-content a {
+    color: var(--neon-secondary);
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.urgency-content a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ── Tablet ── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .urgency-content p {
+        font-size: 0.95rem;
+    }
+}
+
+/* ── Mobile ── */
+@media screen and (max-width: 768px) {
+    .urgency-content {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .urgency-content p {
+        font-size: 0.95rem;
+    }
+}

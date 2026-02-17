@@ -1,7 +1,14 @@
+/**
+ * ── MODULE: 360° Scroll Experience ──
+ * @description Creates a pinned scroll-video experience where
+ *   the video plays/pauses based on scroll position, then zooms
+ *   into info "bubbles" with parallax entrance.
+ * @requires gsap, gsap/ScrollTrigger
+ * @see ../styles/photobooth.css (.experience-container, .bubble)
+ */
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Registramos el plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export function init360Experience() {
@@ -35,12 +42,12 @@ export function init360Experience() {
   // 2. CONFIGURACIÓN DEL VIDEO Y SCROLL
   const video = document.querySelector("#scrolly-video");
   const container = document.querySelector("#pin-container");
-  
+
   if (!video || !container) return;
 
   // Esperar a que el video cargue sus metadatos para saber duración
-  video.onloadedmetadata = function() {
-    
+  video.onloadedmetadata = function () {
+
     // Timeline principal atada al scroll
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -73,7 +80,7 @@ export function init360Experience() {
     // FASE C: Entrada de Info (Parallax Bubbles)
     // Ocurre durante el zoom final
     const infoTl = gsap.timeline();
-    
+
     // Fade in del contenedor de info
     tl.to(".info-layer", { opacity: 1, duration: 2 }, "<+=1");
 

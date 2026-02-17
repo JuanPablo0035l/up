@@ -1,0 +1,71 @@
+/* ══════════════════════════════════════════════════════
+   BUTTONS — Reusable Button Styles
+   ══════════════════════════════════════════════════════
+   Global button classes used across multiple pages:
+   .button, .button.Agenda, .button.ghost, .button-cta
+   ══════════════════════════════════════════════════════ */
+
+/* ── Base Button ── */
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 36px;
+    border-radius: var(--border-radius-m);
+    font-family: var(--font-heading-alt);
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+/* ── Primary CTA (Agenda) ── */
+.button.Agenda {
+    background: var(--brand-gradient);
+    color: #fff;
+    border: none;
+    box-shadow:
+        0 4px 15px rgba(254, 19, 187, 0.23),
+        0 0 0 1px rgba(120, 62, 140, 0.2);
+}
+
+.button.Agenda:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow:
+        0 8px 30px rgba(254, 19, 187, 0.35),
+        0 0 0 2px rgba(120, 62, 140, 0.3);
+}
+
+/* ── Ghost / Outline Button ── */
+.button.ghost {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    backdrop-filter: blur(8px);
+}
+
+.button.ghost:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+}
+
+/* ── Tablet ── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .button {
+        padding: 14px 28px;
+        font-size: 0.95rem;
+    }
+}
+
+/* ── Mobile ── */
+@media screen and (max-width: 768px) {
+    .button {
+        padding: 14px 24px;
+        font-size: 0.9rem;
+    }
+}

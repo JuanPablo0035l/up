@@ -1,3 +1,12 @@
+/**
+ * ── MODULE: Scroll Reveal ──
+ * @description Animates step cards, FAQ, and footer elements
+ *   into view on scroll using GSAP ScrollTrigger.
+ * @requires gsap, gsap/ScrollTrigger
+ * @see ../components/HowItWorks.astro
+ * @see ../components/FAQ.astro
+ * @see ../components/Footer.astro
+ */
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

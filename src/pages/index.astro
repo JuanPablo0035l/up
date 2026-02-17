@@ -5,6 +5,7 @@ import "../styles/lines-effect.css";
 import HowItWorks from "../components/HowItWorks.astro";
 import FAQ from "../components/FAQ.astro";
 import Footer from "../components/Footer.astro";
+import ScrollyTelling from "../components/ScrollyTelling.astro";
 ---
 
 <MainLayout title="Up Party Rentals - Inicio">
@@ -153,67 +154,8 @@ import Footer from "../components/Footer.astro";
         </div>
     </section>
 
-    <!-- BAND 5: INTERACTIVE CAROUSEL (Restored) -->
-    <section class="section-band">
-        <div class="carousel-wrapper" id="wrapper">
-            <h2
-                class="title"
-                style="text-align: center; margin-bottom: 3rem; font-family: var(--font-heading);"
-            >
-                DESCUBRE <span class="highlight">LA FOTOCABINA</span>
-            </h2>
-
-            <div class="carousel-track" id="track">
-                <figure class="card">
-                    <img
-                        src="https://www.shutterstock.com/shutterstock/photos/2414591175/display_1500/stock-photo-riga-latvia-december-person-standing-on-a-degree-photo-booth-platform-often-2414591175.jpg"
-                        alt="Be a superstar"
-                    />
-                    <figcaption>
-                        <h3>Be a superstar</h3>
-                        <p>Se una estrella con nuestra 360</p>
-                    </figcaption>
-                </figure>
-                <figure class="card">
-                    <img
-                        src="https://www.shutterstock.com/shutterstock/photos/2528409143/display_1500/stock-photo-a-degree-photo-booth-setup-with-led-lights-and-a-rotating-platform-surrounded-by-floral-2528409143.jpg"
-                        alt="No puede faltar"
-                    />
-                    <figcaption>
-                        <h3>No puede faltar</h3>
-                        <p>Apto para todo tipo de eventos</p>
-                    </figcaption>
-                </figure>
-                <figure class="card">
-                    <img
-                        src="https://images.unsplash.com/photo-1765947390055-c5187b491ba0?q=80&w=687&auto=format&fit=crop"
-                        alt="Inalambrica"
-                    />
-                    <figcaption>
-                        <h3>¡Inalámbrica!</h3>
-                        <p>Con batería de alta duración</p>
-                    </figcaption>
-                </figure>
-            </div>
-
-            <button class="nav-btn prev-btn" id="prevBtn" aria-label="Anterior">
-                <svg viewBox="0 0 24 24"
-                    ><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"
-                    ></path></svg
-                >
-            </button>
-            <button
-                class="nav-btn next-btn"
-                id="nextBtn"
-                aria-label="Siguiente"
-            >
-                <svg viewBox="0 0 24 24"
-                    ><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
-                    ></path></svg
-                >
-            </button>
-        </div>
-    </section>
+    <!-- BAND 5: VERTICAL SCROLL EXPERIENCE (Scrollytelling) -->
+    <ScrollyTelling />
 
     <!-- TRUST SECTION: Credenciales reales -->
     <section class="section-band trust-section">
@@ -257,8 +199,8 @@ import Footer from "../components/Footer.astro";
         <div class="urgency-content">
             <i class="fas fa-calendar-alt"></i>
             <p>
-                 <strong>Agenda limitada</strong> — Solo atendemos 1 evento por
-                día en San Andrés. <a href="/photobooth#plan-experiencia"
+                <strong>Agenda limitada</strong> — Solo atendemos 1 evento por día
+                en San Andrés. <a href="/photobooth#plan-experiencia"
                     >Reserva tu fecha →</a
                 >
             </p>

@@ -1,0 +1,98 @@
+/* ══════════════════════════════════════════════════════
+   TRUST — Social Proof Grid Section
+   ══════════════════════════════════════════════════════
+   4-column grid of trust/feature cards with glassmorphism
+   styling. Collapses to 2-col on tablet, 1-col on phone.
+   ══════════════════════════════════════════════════════ */
+
+.trust-section {
+    padding: 80px 20px;
+    background: transparent;
+}
+
+.trust-title {
+    text-align: center;
+    font-size: var(--font-size-xl);
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: var(--font-heading);
+}
+
+/* ── Grid Layout ── */
+.trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── Individual Card ── */
+.trust-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 25px;
+    text-align: center;
+    transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.trust-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--neon-secondary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.trust-icon {
+    font-size: 2.5rem;
+    color: var(--neon-secondary);
+    margin-bottom: 20px;
+    filter: drop-shadow(0 0 10px rgba(254, 19, 187, 0.3));
+}
+
+.trust-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.trust-card p {
+    color: var(--text-color);
+    opacity: 0.65;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* ── Tablet ── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .trust-section {
+        padding: 60px 20px;
+    }
+}
+
+/* ── Mobile ── */
+@media screen and (max-width: 768px) {
+    .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* ── Small Phones ── */
+@media screen and (max-width: 500px) {
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-card {
+        padding: 30px 20px;
+    }
+}

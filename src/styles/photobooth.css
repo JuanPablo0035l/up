@@ -591,7 +591,39 @@ body {
     line-height: 1.6;
 }
 
-/* MOBILE REFINEMENT (< 900px) */
+/* ── TABLET (769–1024px) ── */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .roadrunner-title {
+        font-size: clamp(2.5rem, 7vw, 5rem);
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr 20vw 1fr;
+    }
+
+    .bubble {
+        padding: clamp(0.8rem, 2vw, 1.8rem);
+    }
+
+    .bubble h3 {
+        font-size: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .price-card {
+        padding: 2.5rem 1.8rem;
+    }
+
+    .corporate-banner {
+        padding: 2.5rem;
+        max-width: 550px;
+    }
+
+    .spacer {
+        padding: 4rem 1.5rem;
+    }
+}
+
+/* ── MOBILE (≤ 900px) ── */
 @media (max-width: 900px) {
     .roadrunner-title {
         font-size: var(--font-size-xxl);

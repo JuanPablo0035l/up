@@ -1,7 +1,14 @@
+/**
+ * ── MODULE: Arrow / Scroll Hint Animation ──
+ * @description Animates the "scroll down" hint arrow at the
+ *   bottom of the photobooth hero. Fades out on scroll.
+ *   Includes battery-saving pause when tab is hidden.
+ * @requires gsap, gsap/ScrollTrigger
+ * @see ../styles/photobooth.css (.scroll-hint, .arrow)
+ */
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Registramos el plugin
 gsap.registerPlugin(ScrollTrigger);
 
 export function setupScrollAnimation() {

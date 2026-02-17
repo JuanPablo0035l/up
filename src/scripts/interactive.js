@@ -1,3 +1,13 @@
+/**
+ * ── MODULE: Interactive Animations ──
+ * @description GSAP-powered scroll animations for the homepage.
+ *   - Hero parallax background
+ *   - Hero title/subtitle/buttons entrance
+ *   - Impact section parallax
+ *   - Smooth section reveals on scroll
+ * @requires gsap, gsap/ScrollTrigger
+ * @see ../styles/pages/home/hero.css
+ */
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 

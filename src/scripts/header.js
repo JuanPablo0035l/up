@@ -1,5 +1,9 @@
 /**
- * Header desplegable con scroll
+ * ── MODULE: Smart Header ──
+ * @description Auto-hide header on scroll down, reveal on scroll up.
+ *   Uses requestAnimationFrame for smooth 60fps performance.
+ *   Controlled by CSS class `.header-hidden` (translateY(-100%)).
+ * @see ../styles/components/header.css
  */
 function initSmartHeader() {
     const header = document.querySelector('.main-header');

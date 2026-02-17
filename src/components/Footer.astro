@@ -1,5 +1,10 @@
 ---
-
+import bancolombiaIcon from "../assets/icons/payments/bancolombia-seeklogo.svg";
+import nequiIcon from "../assets/icons/payments/nequi-seeklogo.png";
+import daviplataIcon from "../assets/icons/payments/daviplata-37317_logosenvector.com_5.svg";
+import pseIcon from "../assets/icons/payments/pse-seeklogo.png";
+import visaIcon from "../assets/icons/payments/Visa Inc._idDUM8TcN7_1.svg";
+import mastercardIcon from "../assets/icons/payments/Mastercard_id2ZBTo3eZ_6.svg";
 ---
 
 <footer class="main-footer">
@@ -58,6 +63,31 @@
                 <a href="https://wa.me/573210000000" class="whatsapp-footer">
                     <i class="fab fa-whatsapp"></i> Hablar por WhatsApp
                 </a>
+            </div>
+        </div>
+
+        <!-- PAYMENT METHODS -->
+        <div class="footer-payments">
+            <div class="payments-label">Métodos de Pago</div>
+            <div class="payments-icons">
+                <img
+                    src={bancolombiaIcon.src}
+                    alt="Bancolombia"
+                    class="payment-icon"
+                />
+                <img src={nequiIcon.src} alt="Nequi" class="payment-icon" />
+                <img
+                    src={daviplataIcon.src}
+                    alt="Daviplata"
+                    class="payment-icon"
+                />
+                <img src={pseIcon.src} alt="PSE" class="payment-icon" />
+                <img src={visaIcon.src} alt="Visa" class="payment-icon" />
+                <img
+                    src={mastercardIcon.src}
+                    alt="Mastercard"
+                    class="payment-icon"
+                />
             </div>
         </div>
 
@@ -251,7 +281,70 @@
         text-decoration: none;
     }
 
-    @media (max-width: 900px) {
+    /* PAYMENT METHODS STYLES */
+    .footer-payments {
+        margin-top: 40px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .payments-label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .payments-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+
+    .payment-icon {
+        height: 30px;
+        width: auto;
+        opacity: 0.5;
+        filter: grayscale(1) brightness(1.5);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        object-fit: contain;
+    }
+
+    .payment-icon:hover {
+        opacity: 1;
+        filter: grayscale(0) brightness(1);
+        transform: translateY(-5px) scale(1.1);
+    }
+
+    /* ── TABLET (769–1024px) ── */
+    @media screen and (min-width: 769px) and (max-width: 1024px) {
+        .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+        }
+        .footer-brand {
+            grid-column: 1 / -1; /* Brand spans full width */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-footer {
+            padding: 60px 20px 25px;
+        }
+    }
+
+    /* ── MOBILE (≤ 900px) ── */
+    @media (max-width: 768px) {
         .footer-grid {
             grid-template-columns: 1fr;
             gap: 40px;
